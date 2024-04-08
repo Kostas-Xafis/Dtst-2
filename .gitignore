@@ -5,9 +5,8 @@ target/
 **.log
 **.gz
 .env
-TODO.txt
 DtstProject
-Run.txt
+/*.txt
 
 ### STS ###
 .apt_generated
