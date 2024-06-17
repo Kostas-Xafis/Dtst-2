@@ -17,11 +17,11 @@ import java.util.stream.Stream;
 })
 public class User {
 
-    public static Long inc = -1L;
+    public static Long inc = 6L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="User_id")
-    private Long id = (inc--);
+    private Long id = (inc++);
 
 
     @NotBlank
@@ -227,6 +227,7 @@ public class User {
                 "lastname='" + lastname + "',\n" +
                 "password='" + password + "',\n" +
                 "email='" + email + "',\n" +
+                "roles=[" + UserRolesList + "],\n" +
                 '}';
         print_depth--;
         return str;
