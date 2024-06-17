@@ -73,23 +73,23 @@ CREATE TABLE Payment(
 ) AUTO_INCREMENT = 1;
 
 CREATE TABLE Tax_Declaration (
-     Declaration_id int NOT NULL AUTO_INCREMENT,
-     Buyer_id int,
-     Seller_id int NOT NULL,
-     BuyerNotary_id int,
-     SellerNotary_id int,
-     Payment_id int,
-     Real_estate_id int,
-     Declaration_content varchar(800),
-     Accepted int DEFAULT 0,
-     Completed boolean DEFAULT false,
-     CONSTRAINT PK_Tax PRIMARY KEY (Declaration_id),
-     CONSTRAINT FK_Tax_Buyer_id  FOREIGN KEY (Buyer_id) REFERENCES User(User_id),
-     CONSTRAINT FK_Tax_Seller_id FOREIGN KEY (Seller_id) REFERENCES User(User_id),
-     CONSTRAINT FK_Tax_Payment_id  FOREIGN KEY (Payment_id) REFERENCES Payment(Payment_id),
-     CONSTRAINT FK_Tax_Estate_id FOREIGN KEY (Real_estate_id) REFERENCES Real_Estate(Real_estate_id),
-     CONSTRAINT FK_Tax_SellerNotary_id FOREIGN KEY (SellerNotary_id) REFERENCES User(User_id),
-     CONSTRAINT FK_Tax_BuyerNotary_id  FOREIGN KEY (BuyerNotary_id) REFERENCES User(User_id)
+    Declaration_id int NOT NULL AUTO_INCREMENT,
+    Buyer_id int,
+    Seller_id int NOT NULL,
+    BuyerNotary_id int,
+    SellerNotary_id int,
+    Payment_id int,
+    Real_estate_id int,
+    Declaration_content varchar(800),
+    Accepted int DEFAULT 0,
+    Completed boolean DEFAULT false,
+    CONSTRAINT PK_Tax PRIMARY KEY (Declaration_id),
+    CONSTRAINT FK_Tax_Buyer_id  FOREIGN KEY (Buyer_id) REFERENCES User(User_id),
+    CONSTRAINT FK_Tax_Seller_id FOREIGN KEY (Seller_id) REFERENCES User(User_id),
+    CONSTRAINT FK_Tax_Payment_id  FOREIGN KEY (Payment_id) REFERENCES Payment(Payment_id),
+    CONSTRAINT FK_Tax_Estate_id FOREIGN KEY (Real_estate_id) REFERENCES Real_Estate(Real_estate_id),
+    CONSTRAINT FK_Tax_SellerNotary_id FOREIGN KEY (SellerNotary_id) REFERENCES User(User_id),
+    CONSTRAINT FK_Tax_BuyerNotary_id  FOREIGN KEY (BuyerNotary_id) REFERENCES User(User_id)
 ) AUTO_INCREMENT = 1;
 
 #===================ADD CONSTRAINTS===================

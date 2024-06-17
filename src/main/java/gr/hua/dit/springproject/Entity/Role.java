@@ -48,8 +48,8 @@ public class Role {
     @Override
     public String toString() {
         return "Role{" + ",\n" +
-                "role_id=" + role_id + ",\n" +
-                "name=" + name + "',\n" +
+                "\trole_id=" + role_id + ",\n" +
+                "\tname=" + name + "',\n" +
                 '}';
     }
 }

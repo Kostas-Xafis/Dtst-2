@@ -76,8 +76,8 @@ public class UserRoles {
         @Override
         public String toString() {
             return "UserRoles{" + ",\n" +
-                    "user_id=" + user + ",\n" +
-                    "role_id=" + role + ",\n" +
+                    "\tuser_id=" + user + ",\n" +
+                    "\trole_id=" + role + ",\n" +
                     '}';
         }
 }
