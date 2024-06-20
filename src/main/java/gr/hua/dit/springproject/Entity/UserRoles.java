@@ -33,7 +33,7 @@ class UserRolesId implements Serializable {
 
 @Entity
 @IdClass(UserRolesId.class)
-@Table(name="User_Roles", schema = "dtst")
+@Table(name="user_roles")
 public class UserRoles {
 
         @Id

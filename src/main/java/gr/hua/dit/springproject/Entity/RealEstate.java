@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.HashMap;
 
 @Entity
-@Table(name="Real_Estate", schema = "dtst")
+@Table(name="real_estate")
 public class RealEstate {
 
     @Id

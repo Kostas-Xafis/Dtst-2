@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 
 @Entity
-@Table(name="user", schema = "dtst", uniqueConstraints = {
+@Table(name="users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "Username"),
         @UniqueConstraint(columnNames = "Email")
 })
