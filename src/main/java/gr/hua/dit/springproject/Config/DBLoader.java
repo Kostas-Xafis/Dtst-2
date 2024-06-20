@@ -30,9 +30,9 @@ public class DBLoader {
             databasePopulator.populate(conn);
             conn.close();
         } catch (SQLException e) {
-            logger.error("Either failed to connect to database or db is already initialized with dummy data: " + e.getMessage());
+            logger.error("Failed to connect to database: " + e.getMessage());
         } catch (Exception e) {
-            logger.error("Failed to load dummy data: " + e.getMessage());
+            logger.error("Already initialized with dummy data: " + e.getMessage());
         }
     }
 }
