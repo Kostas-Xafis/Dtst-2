@@ -6,7 +6,6 @@ WORKDIR ./backend
 
 COPY . .
 
-
 RUN mvn clean install
 
 RUN mvn package -DskipTests

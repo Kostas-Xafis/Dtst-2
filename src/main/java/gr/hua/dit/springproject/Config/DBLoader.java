@@ -22,11 +22,17 @@ public class DBLoader {
     private String connString;
 
     @Bean
-    private void databaseLoader() throws SQLException {
-        Connection conn = DriverManager.getConnection(connString);
-        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-        databasePopulator.addScript(new ClassPathResource("dummies.sql"));
-        databasePopulator.populate(conn);
-        conn.close();
+    private void databaseLoader() {
+        try {
+            Connection conn = DriverManager.getConnection(connString);
+            ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
+            databasePopulator.addScript(new ClassPathResource("dummies.sql"));
+            databasePopulator.populate(conn);
+            conn.close();
+        } catch (SQLException e) {
+            logger.error("Either failed to connect to database or db is already initialized with dummy data: " + e.getMessage());
+        } catch (Exception e) {
+            logger.error("Failed to load dummy data: " + e.getMessage());
+        }
     }
 }
