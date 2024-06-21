@@ -11,23 +11,11 @@ pipeline {
                 git branch: 'main', url: 'git@github.com:Kostas-Xafis/Dtst-2.git'
             }
         }
-        // stage('Test') {
-        //     steps {
-        //         sh './mvnw test'
-        //     }
-        // }
         stage('run ansible pipeline') {
             steps {
                 build job: 'ansible'
             }
         }
-        // stage('install ansible prerequisites') {
-        //     steps {
-        //         sh '''
-        //             ansible-galaxy install geerlingguy.postgresql
-        //         '''
-        //     }
-        // }
         stage('Install postgres') {
             steps {
                 sh '''
@@ -39,12 +27,6 @@ pipeline {
 
         stage('Deploy spring boot app') {
             steps {
-                // sh '''
-                //    # replace dbserver in host_vars
-                //     # sed -i 's/dbserver/4.211.249.239/g' ~/workspace/ansible/host_vars/appserver-vm.yaml
-                //    # replace workingdir in host_vars
-                //     # sed -i 's/vagrant/azureuser/g' ~/workspace/ansible/host_vars/appserver-vm.yaml
-                // '''
                 sh '''
                     # edit host var for appserver
 
