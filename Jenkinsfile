@@ -49,20 +49,20 @@ pipeline {
                     # edit host var for appserver
 
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appserver-vm ~/workspace/ansible/playbooks/spring.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-backend-vm ~/workspace/ansible/playbooks/spring.yaml
                 '''
             }
         }
 
-        // stage('Deploy frontend') {
-        //     steps {
-        //         sh '''
-        //             sed -i 's/dbserver/4.211.249.239/g' ~/workspace/ansible/host_vars/appserver-vm.yaml
-        //             export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-        //             ansible-playbook -i ~/workspace/ansible/hosts.yaml -l appserver-vm -e branch=main -e backend_server_url=http://localhost:9090 ~/workspace/ansible/playbooks/vuejs.yaml
-        //         '''
-        //     }
-        // }
+        stage('Deploy frontend') {
+            steps {
+                sh '''
+                    # sed -i 's/dbserver/4.211.249.239/g' ~/workspace/ansible/host_vars/appserver-vm.yaml
+                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-frontend-vm -e branch=main -e backend_server_url=http://localhost:9090 ~/workspace/ansible/playbooks/vuejs.yaml
+                '''
+            }
+        }
     }
 
     post {
