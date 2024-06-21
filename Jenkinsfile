@@ -28,10 +28,8 @@ pipeline {
         stage('Deploy spring boot app') {
             steps {
                 sh '''
-                    # edit host var for appserver
-
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-backend-vm ~/workspace/ansible/playbooks/spring.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-backend-server ~/workspace/ansible/playbooks/spring.yaml
                 '''
             }
         }
@@ -39,9 +37,8 @@ pipeline {
         stage('Deploy frontend') {
             steps {
                 sh '''
-                    # sed -i 's/dbserver/4.211.249.239/g' ~/workspace/ansible/host_vars/appserver-vm.yaml
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-frontend-vm ~/workspace/ansible/playbooks/website.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-frontend-server ~/workspace/ansible/playbooks/website.yaml
                 '''
             }
         }
