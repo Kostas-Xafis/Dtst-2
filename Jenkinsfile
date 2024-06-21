@@ -41,7 +41,7 @@ pipeline {
                 sh '''
                     # sed -i 's/dbserver/4.211.249.239/g' ~/workspace/ansible/host_vars/appserver-vm.yaml
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-frontend-vm -e branch=main -e backend_server_url=http://localhost:9090 ~/workspace/ansible/playbooks/vuejs.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-frontend-vm ~/workspace/ansible/playbooks/website.yaml
                 '''
             }
         }
