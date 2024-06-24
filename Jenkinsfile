@@ -1,17 +1,8 @@
 pipeline {
     agent any
 
-    // environment {
-    //     EMAIL_TO = 'koxafis@gmail.com'
-    // }
-
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'git@github.com:Kostas-Xafis/Dtst-2.git'
-            }
-        }
-        stage('run ansible pipeline') {
+        stage('Run ansible pipeline') {
             steps {
                 build job: 'ansible'
             }
@@ -29,25 +20,9 @@ pipeline {
             steps {
                 sh '''
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-backend-server ~/workspace/ansible/playbooks/spring.yaml
-                '''
-            }
-        }
-
-        stage('Deploy frontend') {
-            steps {
-                sh '''
-                    export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-frontend-server ~/workspace/ansible/playbooks/website.yaml
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l gcloud-backend-server ~/workspace/ansible/playbooks/spring.yaml --vault-password-file ~/workspace/.vaultpass
                 '''
             }
         }
     }
-
-    // post {
-    //     always {
-    //         mail  to: "${EMAIL_TO}", body: "Project ${env.JOB_NAME} <br>, Build status ${currentBuild.currentResult} <br> Build Number: ${env.BUILD_NUMBER} <br> Build URL: ${env.BUILD_URL}", subject: "JENKINS: Project name -> ${env.JOB_NAME}, Build -> ${currentBuild.currentResult}"
-    //     }
-    // }
-
 }
