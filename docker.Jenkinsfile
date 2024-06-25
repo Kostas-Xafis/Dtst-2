@@ -37,7 +37,7 @@ pipeline {
             steps {
                 sh '''
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l docker-vm ~/workspace/ansible/playbooks/docker.yaml --vault-password-file ~/workspace/.vaultpass -e "docker_services='postgres spring'"
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l docker-vm ~/workspace/ansible/playbooks/docker.yaml --vault-password-file ~/workspace/.vaultpass -e "docker_services='pgdb spring'"
                 '''
             }
         }
