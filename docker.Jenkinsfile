@@ -33,11 +33,11 @@ pipeline {
             }
         }
 
-        stage('Deploy frontend @ docker server') {
+        stage('Deploy backend @ docker server') {
             steps {
                 sh '''
                     export ANSIBLE_CONFIG=~/workspace/ansible/ansible.cfg
-                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l docker-vm ~/workspace/ansible/playbooks/docker.yaml --vault-password-file ~/workspace/.vaultpass -e "docker_services='pgdb spring'"
+                    ansible-playbook -i ~/workspace/ansible/hosts.yaml -l docker-backend-server ~/workspace/ansible/playbooks/docker.yaml --vault-password-file ~/workspace/.vaultpass -e "docker_services='pgdb spring'"
                 '''
             }
         }
